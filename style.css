@@ -1,0 +1,87 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  background: #f5f7fa;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: white;
+}
+
+.logo h1 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.logo span {
+  font-size: 14px;
+  color: #7f8c8d;
+}
+
+nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #2c3e50;
+}
+
+.btn-contato {
+  background: #2ecc71;
+  padding: 8px 15px;
+  border-radius: 6px;
+  color: white;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  margin: 30px auto;
+  padding: 30px;
+  border-radius: 20px;
+  width: 80%;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+
+.preco-diaria {
+  background: #4a6cf7;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin: 15px 0;
+}
+
+.pacote {
+  background: #ecf0f1;
+  padding: 10px 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.pacote strong {
+  color: green;
+  font-size: 20px;
+  margin-left: 10px;
+}
+
+.frete {
+  margin-top: 15px;
+  color: #555;
+}
+
+.whatsapp {
+  display: block;
+  width: 300px;
+  margin: 40px auto;
+  text-align: center;
+  background: #25D366;
+  color: white;
+  padding: 15px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+}
