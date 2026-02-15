@@ -1,97 +1,220 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background: #f5f7fa;
+/* RESET BÁSICO */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 40px;
-  background: white;
+body{
+  background:#f5f7fb;
+  color:#222;
 }
 
-.logo h1 {
-  margin: 0;
-  color: #2c3e50;
+
+/* HEADER */
+
+header{
+  background:white;
+  padding:18px 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  box-shadow:0 2px 8px rgba(0,0,0,0.05);
+  position:sticky;
+  top:0;
+  z-index:10;
 }
 
-.logo span {
-  font-size: 14px;
-  color: #7f8c8d;
+.logo h1{
+  font-size:26px;
+  color:#0a58ca;
 }
 
-nav a {
-  margin-left: 20px;
-  text-decoration: none;
-  color: #2c3e50;
+.logo span{
+  font-size:13px;
+  color:#666;
 }
 
-.btn-contato {
-  background: #2ecc71;
-  padding: 8px 15px;
-  border-radius: 6px;
-  color: white;
+nav a{
+  margin-left:25px;
+  text-decoration:none;
+  color:#333;
+  font-weight:600;
 }
+
+nav a:hover{
+  color:#0a58ca;
+}
+
+.btn-contato{
+  background:#0a58ca;
+  color:white;
+  padding:10px 18px;
+  border-radius:8px;
+}
+
+
+/* CONTAINER PRODUTOS */
+
+main{
+  padding:40px 20px;
+}
+
+.produtos{
+  max-width:1100px;
+  margin:auto;
+
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap:30px;
+}
+
+
+/* CARD PRODUTO */
 
 .card{
-  width: 220px;          /* diminui tamanho */
-  padding: 12px;
-  border-radius: 12px;
+  background:white;
+  border-radius:14px;
+  padding:25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.06);
+  transition:.25s;
 }
+
+.card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 26px rgba(0,0,0,0.1);
+}
+
+
+/* INFO */
+
+.info{
+  flex:1;
+}
+
+.info h2{
+  font-size:20px;
+  margin-bottom:6px;
+}
+
+.info p{
+  color:#666;
+  margin-bottom:10px;
+}
+
+
+/* PREÇO */
+
+.preco-diaria{
+  font-size:18px;
+  font-weight:bold;
+  color:#0a58ca;
+  margin-bottom:10px;
+}
+
+.pacote{
+  background:#f0f4ff;
+  padding:8px 12px;
+  border-radius:8px;
+  display:inline-block;
+  margin-bottom:12px;
+}
+
+.pacote span{
+  font-size:12px;
+  color:#666;
+}
+
+.pacote strong{
+  display:block;
+  color:#0a58ca;
+}
+
+
+/* TEXTO FRETE */
+
+.frete{
+  font-size:13px;
+  color:#777;
+  margin-bottom:15px;
+}
+
+
+/* BOTÃO CARD */
+
+.btn-card{
+  display:inline-block;
+  background:#0a58ca;
+  color:white;
+  text-decoration:none;
+  padding:10px 16px;
+  border-radius:8px;
+  font-weight:bold;
+  transition:.2s;
+}
+
+.btn-card:hover{
+  background:#084298;
+}
+
+
+/* IMAGEM PRODUTO */
 
 .card img{
-  width: 100%;
-  height: 140px;         /* controla tamanho da imagem */
-  object-fit: contain;   /* não corta a imagem */
+  width:140px;
+  height:auto;
+  object-fit:contain;
 }
 
-.card h3{
-  font-size: 16px;
-  margin: 8px 0 4px;
+
+/* BOTÃO WHATSAPP FIXO */
+
+.whatsapp{
+  position:fixed;
+  bottom:25px;
+  right:25px;
+  background:#25d366;
+  color:white;
+  padding:14px 18px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 8px 18px rgba(0,0,0,0.25);
+  transition:.2s;
 }
 
-.card p{
-  font-size: 13px;
-}
-}
-
-.preco-diaria {
-  background: #4a6cf7;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 20px;
-  margin: 15px 0;
+.whatsapp:hover{
+  transform:scale(1.05);
 }
 
-.pacote {
-  background: #ecf0f1;
-  padding: 10px 20px;
-  border-radius: 20px;
-  display: inline-block;
-}
 
-.pacote strong {
-  color: green;
-  font-size: 20px;
-  margin-left: 10px;
-}
+/* RESPONSIVO MOBILE */
 
-.frete {
-  margin-top: 15px;
-  color: #555;
-}
+@media(max-width:700px){
 
-.whatsapp {
-  display: block;
-  width: 300px;
-  margin: 40px auto;
-  text-align: center;
-  background: #25D366;
-  color: white;
-  padding: 15px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
+  header{
+    flex-direction:column;
+    gap:10px;
+    text-align:center;
+  }
+
+  nav a{
+    margin:0 8px;
+  }
+
+  .card{
+    flex-direction:column;
+    text-align:center;
+  }
+
+  .card img{
+    width:120px;
+    margin-top:10px;
+  }
+
 }
