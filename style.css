@@ -35,16 +35,26 @@ nav a {
   color: white;
 }
 
-.card {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  margin: 30px auto;
-  padding: 30px;
-  border-radius: 20px;
-  width: 80%;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+.card{
+  width: 220px;          /* diminui tamanho */
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.card img{
+  width: 100%;
+  height: 140px;         /* controla tamanho da imagem */
+  object-fit: contain;   /* não corta a imagem */
+}
+
+.card h3{
+  font-size: 16px;
+  margin: 8px 0 4px;
+}
+
+.card p{
+  font-size: 13px;
+}
 }
 
 .preco-diaria {
