@@ -35,7 +35,7 @@ color:#666;
 }
 
 nav a{
-margin-left:25px;
+margin-left:200px;
 text-decoration:none;
 color:#333;
 font-weight:600;
@@ -376,5 +376,6 @@ main{
     width:120px;
     margin-top:10px;
   }
+
 
 }
