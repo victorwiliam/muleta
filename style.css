@@ -166,10 +166,6 @@ nav a{
 margin:0 10px;
 }
 
-}
-  z-index:10;
-}
-
 .logo h1{
   font-size:26px;
   color:#0a58ca;
@@ -198,6 +194,7 @@ nav a:hover{
   border-radius:8px;
 }
 
+}
 
 /* CONTAINER PRODUTOS */
 
@@ -342,13 +339,32 @@ main{
 @media(max-width:700px){
 
   header{
-    flex-direction:column;
-    gap:10px;
-    text-align:center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 14px 16px;
+  }
+
+  nav{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;     /* permite quebrar linha */
+    gap: 10px;           /* espaçamento entre links */
   }
 
   nav a{
-    margin:0 8px;
+    margin: 0;          /* remove margin-left do desktop */
+    padding: 8px 10px;
+  }
+
+  .btn-contato{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 14px;
   }
 
   .card{
