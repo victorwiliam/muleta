@@ -1,179 +1,264 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muleta Express</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muleta Express | Aluguel Ortopédico 24h</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1457c8;
+            --secondary: #ffae36;
+            --bg-light: #f8faff;
+            --text-main: #2d3436;
+            --text-muted: #636e72;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(20, 87, 200, 0.04);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        body { background-color: var(--bg-light); color: var(--text-main); line-height: 1.6; }
+
+        /* HEADER SLIM */
+        .site-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #eee;
+        }
+        .logo-img { width: 110px; height: auto; }
+        nav.menu a { text-decoration: none; color: var(--text-main); margin-left: 18px; font-size: 13px; font-weight: 600; transition: 0.3s; }
+        nav.menu a:hover { color: var(--primary); }
+        .btn-header { background: var(--primary); color: white !important; padding: 10px 20px; border-radius: 50px; }
+
+        /* HERO SLIM */
+        .hero {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 20px;
+            align-items: center;
+            gap: 40px;
+        }
+        .hero-text h1 { font-size: 40px; color: var(--primary); line-height: 1.1; margin-bottom: 15px; }
+        .hero-text h1 span { color: var(--secondary); }
+        .hero-text p { font-size: 17px; color: var(--text-muted); margin-bottom: 25px; }
+        .hero-image img { width: 100%; max-width: 400px; }
+
+        /* PRODUTOS (CARDS COMPACTOS) */
+        .produtos-section { max-width: 1100px; margin: 40px auto; padding: 0 20px; }
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 20px;
+        }
+        .card {
+            background: white; border-radius: 20px; padding: 25px; text-align: center;
+            border: 1px solid #f0f0f0; transition: 0.4s ease;
+            box-shadow: var(--shadow);
+            display: flex; flex-direction: column; justify-content: space-between;
+        }
+        .card:hover { transform: translateY(-7px); border-color: var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.06); }
+        
+        .card img { width: 110px; height: 110px; object-fit: contain; margin: 0 auto 15px; }
+        .card h3 { font-size: 17px; margin-bottom: 8px; font-weight: 700; color: var(--primary); }
+        .preco-tag { font-size: 20px; font-weight: 800; margin-bottom: 5px; color: var(--secondary); }
+        .pacote-info { font-size: 12px; color: var(--text-muted); background: #f0f7ff; padding: 4px 10px; border-radius: 6px; }
+
+        .btn-card {
+            background: var(--primary); color: white; text-decoration: none;
+            padding: 12px; border-radius: 12px; font-size: 14px; font-weight: 700;
+            margin-top: 20px; transition: 0.2s;
+        }
+        .btn-card:hover { background: #0b44a3; }
+
+        /* SEÇÃO COMO FUNCIONA - SLIM */
+        .como-funciona { background: var(--white); padding: 50px 20px; margin-top: 50px; border-top: 1px solid #eee; }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 30px auto 0;
+        }
+        .step-card { text-align: center; padding: 20px; }
+        .step-number {
+            width: 36px; height: 36px; background: var(--primary); color: white;
+            display: inline-flex; align-items: center; justify-content: center;
+            border-radius: 50%; margin-bottom: 12px; font-weight: bold; font-size: 16px;
+        }
+        .step-card h3 { font-size: 17px; margin-bottom: 6px; }
+        .step-card p { font-size: 14px; color: var(--text-muted); }
+
+        /* DEPOIMENTOS SLIM */
+        .depoimentos { padding: 60px 20px; max-width: 1100px; margin: auto; }
+        .depo-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 30px; align-items: flex-start; }
+        .depo-box { background: white; padding: 25px; border-radius: 18px; border: 1px solid #eee; font-size: 14px; margin-bottom: 15px; box-shadow: var(--shadow); }
+        .stars { color: #ffc107; margin-bottom: 8px; font-size: 14px; }
+
+        /* FORMULÁRIO SLIM - OTIMIZADO */
+        .form-slim { background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #f0f0f0; box-shadow: var(--shadow); }
+        .form-slim h3 { font-size: 17px; margin-bottom: 15px; color: var(--primary); }
+        .form-slim input, .form-slim textarea, .form-slim select {
+            width: 100%; padding: 12px; margin-bottom: 12px;
+            border: 1px solid #ddd; border-radius: 10px; font-size: 14px; outline: none;
+            background: #fff;
+        }
+        .form-slim select { appearance: none; -webkit-appearance: none; color: var(--text-muted); font-weight: 500;}
+
+        /* WHATSAPP */
+        .whatsapp-btn {
+            position: fixed; bottom: 25px; right: 25px; background: #25d366;
+            color: white; padding: 15px 25px; border-radius: 50px;
+            text-decoration: none; font-weight: bold; font-size: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15); z-index: 10000;
+        }
+
+        @media (max-width: 768px) {
+            .hero, .depo-grid { grid-template-columns: 1fr; text-align: center; }
+            .hero-text h1 { font-size: 32px; }
+            nav.menu { display: none; }
+            .produtos-grid { grid-template-columns: 1fr; }
+        }
+    </style>
 </head>
 <body>
 
-  <header class="site-header" id="inicio">
-    <div class="header-top">
+    <header class="site-header">
+        <img src="assets/muleta-express.png" alt="Logo Muleta Express" class="logo-img">
+        <nav class="menu">
+            <a href="#inicio">Início</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#depoimentos">Depoimentos</a>
+            <a href="https://wa.me/5511961407984" class="btn-header">Alugar Agora</a>
+        </nav>
+    </header>
 
-      <div class="logo">
-        <img src="muleta-express.png" alt="Muleta Express" class="logo-img">
-      </div>
+    <main>
+        <section class="hero" id="inicio">
+            <div class="hero-text">
+                <h1>Aluguel de Itens Ortopédicos <span>humanizado.</span></h1>
+                <p>Equipamentos higienizados com entrega expressa em até 1h na sua porta. Atendimento 24h via WhatsApp.</p>
+                <div style="font-size: 14px; font-weight: bold; color: var(--primary); background: #eef4ff; display: inline-block; padding: 8px 18px; border-radius: 8px;">
+                    🕒 Atendimento 24h • 🚀 Entrega Rápida
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://undraw.co/api/illustrations/svg/medical_care" alt="Cuidados Médicos">
+            </div>
+        </section>
 
-      <input type="checkbox" id="menu-toggle">
-      <label for="menu-toggle" class="menu-icon" aria-label="Abrir menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
+        <section class="produtos-section" id="produtos">
+            <div class="produtos-grid">
+                
+                <article class="card">
+                    <img src="assets/axilar.png" alt="Muleta Axilar">
+                    <div>
+                        <h3>Muleta Axilar</h3>
+                        <p class="preco-tag">R$ 8,00 <small style="font-size: 13px;">/dia</small></p>
+                        <span class="pacote-info">10 dias por R$ 75</span>
+                    </div>
+                    <a href="https://wa.me/5511961407984" class="btn-card">Reservar</a>
+                </article>
 
-      <nav class="menu">
-        <a href="#inicio">Início</a>
-        <a href="#como-funciona">Como Funciona</a>
-        <a href="#depoimentos">Depoimentos</a>
-        <a href="https://wa.me/5511961407984" target="_blank">Contato</a>
-        <a class="btn-alugar" href="https://wa.me/5511961407984" target="_blank">
-          Alugar Agora
-        </a>
-      </nav>
-    </div>
+                <article class="card">
+                    <img src="assets/canadense.png" alt="Muleta Canadense">
+                    <div>
+                        <h3>Muleta Canadense</h3>
+                        <p class="preco-tag">R$ 8,00 <small style="font-size: 13px;">/dia</small></p>
+                        <span class="pacote-info">10 dias por R$ 75</span>
+                    </div>
+                    <a href="https://wa.me/5511961407984" class="btn-card">Reservar</a>
+                </article>
 
-    <div class="header-bar">
-      <span>Entrega em até 1h</span>
-      <span class="dot">•</span>
-      <span>Atendimento 24h</span>
-    </div>
-  </header>
+                <article class="card">
+                    <img src="assets/cadeira.png" alt="Cadeira de Rodas">
+                    <div>
+                        <h3>Cadeira de Rodas</h3>
+                        <p class="preco-tag">R$ 15,00 <small style="font-size: 13px;">/dia</small></p>
+                        <span class="pacote-info">Modelo Dobrável</span>
+                    </div>
+                    <a href="https://wa.me/5511961407984" class="btn-card">Reservar</a>
+                </article>
 
-  <main>
-    <div class="produtos">
+                <article class="card">
+                    <img src="assets/tiboia.png" alt="Tipóia">
+                    <div>
+                        <h3>Tipóia Ortopédica</h3>
+                        <p class="preco-tag">R$ 5,00 <small style="font-size: 13px;">/dia</small></p>
+                        <span class="pacote-info">Tamanhos P, M e G</span>
+                    </div>
+                    <a href="https://wa.me/5511961407984" class="btn-card">Reservar</a>
+                </article>
 
-      <section class="card">
-        <div class="info">
-          <h2>Muletas Axilar</h2>
-          <img src="axilar.png" alt="Muleta Axilar">
+            </div>
+        </section>
 
-          <div class="preco-diaria">R$ 8 por dia</div>
+        <section class="como-funciona" id="como-funciona">
+            <h2 style="text-align:center; font-size: 26px; color: var(--primary);">Passo a passo</h2>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Escolha</h3>
+                    <p>Selecione o produto ideal para sua recuperação.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>WhatsApp</h3>
+                    <p>Combine a entrega e tempo de aluguel.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Receba</h3>
+                    <p>Entrega rápida e equipamento higienizado.</p>
+                </div>
+            </div>
+        </section>
 
-          <div class="pacote">
-            <span>Pacote 10 dias</span>
-            <strong>R$ 75</strong>
-          </div>
+        <section class="depoimentos" id="depoimentos">
+            <div class="depo-grid">
+                <div class="lista">
+                    <h2 style="margin-bottom: 25px; font-size: 24px;">O que dizem os clientes</h2>
+                    <div class="depo-box">
+                        <div class="stars">★★★★★</div>
+                        <p>"Excelente atendimento e agilidade no domingo!"</p>
+                        <small>— Roberto S.</small>
+                    </div>
+                    <div class="depo-box">
+                        <div class="stars">★★★★★</div>
+                        <p>"Equipamento novo e muito limpo. Indico!"</p>
+                        <small>— Carla F.</small>
+                    </div>
+                </div>
+                
+                <div class="form-slim">
+                    <h3>Avalie nosso serviço</h3>
+                    <input type="text" placeholder="Seu nome" required>
+                    <textarea placeholder="Sua opinião..." rows="3" required></textarea>
+                    
+                    <select id="nota" required>
+                        <option value="" disabled selected>Selecionar Estrelas...</option>
+                        <option value="5">★★★★★ (Excelente)</option>
+                        <option value="4">★★★★ (Bom)</option>
+                        <option value="3">★★★ (Regular)</option>
+                    </select>
+                    
+                    <button type="button" style="background: var(--secondary); border:none; width:100%; padding: 12px; border-radius: 10px; font-weight: bold; cursor:pointer;" onclick="alert('Obrigado! Sua avaliação foi enviada para moderação.')">Enviar</button>
+                </div>
+            </div>
+        </section>
+    </main>
 
-          <p class="frete">Entrega rápida sem burocracia</p>
-
-          <a class="btn-card" href="https://wa.me/5511961407984?text=Olá%20quero%20reservar%20Muleta%20Axilar" target="_blank">
-            Reservar
-          </a>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="info">
-          <h2>Muletas Canadenses</h2>
-          <img src="canadense.png" alt="Muleta Canadense">
-
-          <div class="preco-diaria">R$ 8 por dia</div>
-
-          <div class="pacote">
-            <span>Pacote 10 dias</span>
-            <strong>R$ 75</strong>
-          </div>
-
-          <p class="frete">Entrega rápida sem burocracia</p>
-
-          <a class="btn-card" href="https://wa.me/5511961407984?text=Olá%20quero%20reservar%20Muleta%20Canadense" target="_blank">
-            Reservar
-          </a>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="info">
-          <h2>Cadeira de Rodas</h2>
-          <img src="cadeira.png" alt="Cadeira de Rodas">
-
-          <div class="preco-diaria">R$ 8 por dia</div>
-
-          <div class="pacote">
-            <span>Pacote 10 dias</span>
-            <strong>R$ 75</strong>
-          </div>
-
-          <p class="frete">Entrega rápida sem burocracia</p>
-
-          <a class="btn-card" href="https://wa.me/5511961407984?text=Olá%20quero%20reservar%20Cadeira%20de%20Rodas" target="_blank">
-            Reservar
-          </a>
-        </div>
-      </section>
-
-      <section class="card">
-        <div class="info">
-          <h2>Tipóia</h2>
-          <img src="tiboia.png" alt="Tipóia">
-
-          <div class="preco-diaria">R$ 8 por dia</div>
-
-          <div class="pacote">
-            <span>Pacote 10 dias</span>
-            <strong>R$ 75</strong>
-          </div>
-
-          <p class="frete">Entrega rápida sem burocracia</p>
-
-          <a class="btn-card" href="https://wa.me/5511961407984?text=Olá%20quero%20reservar%20Tipóia" target="_blank">
-            Reservar
-          </a>
-        </div>
-      </section>
-
-    </div>
-
-    <section id="como-funciona" class="como-funciona">
-      <h2>Como funciona</h2>
-
-      <div class="passos">
-        <div class="passo">
-          <span>1</span>
-          <h3>Escolha o produto</h3>
-          <p>Selecione o item ortopédico que você precisa de forma rápida e simples.</p>
-        </div>
-
-        <div class="passo">
-          <span>2</span>
-          <h3>Chame no WhatsApp</h3>
-          <p>Confirmamos disponibilidade, valor e endereço para entrega.</p>
-        </div>
-
-        <div class="passo">
-          <span>3</span>
-          <h3>Receba em casa</h3>
-          <p>Entregamos rapidamente com taxa calculada conforme o bairro.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="depoimentos" class="depoimentos">
-      <h2>Depoimentos</h2>
-
-      <div class="lista-depoimentos">
-        <div class="depoimento">
-          <p>"Atendimento rápido e sem complicação. Me ajudou muito no momento que eu precisava."</p>
-          <strong>— Cliente</strong>
-        </div>
-
-        <div class="depoimento">
-          <p>"Gostei da praticidade. Fiz tudo pelo WhatsApp e a entrega foi rápida."</p>
-          <strong>— Cliente</strong>
-        </div>
-
-        <div class="depoimento">
-          <p>"Produto em ótimo estado e atendimento atencioso. Recomendo."</p>
-          <strong>— Cliente</strong>
-        </div>
-      </div>
-    </section>
-
-    <a class="whatsapp" href="https://wa.me/5511961407984" target="_blank">
-      Reservar pelo WhatsApp
+    <a href="https://wa.me/5511961407984" class="whatsapp-btn" target="_blank" rel="noopener">
+        💬 Atendimento no WhatsApp
     </a>
-  </main>
 
 </body>
 </html>
